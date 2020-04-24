@@ -1,0 +1,17 @@
+{
+  "name": "insta-me",
+  "displayName": "insta-me",
+  "expo": {
+    "name": "insta-me",
+    "slug": "insta-me",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
