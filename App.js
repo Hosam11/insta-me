@@ -1,36 +1,48 @@
 import * as React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Router, Stack, Scene, Actions, ActionConst } from 'react-native-router-flux';
 
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-});
+import Login from './insta-me/login/Login'
+import SignUp from './insta-me/sign-up/SingUp'
+import Home from './insta-me/home/Home'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>To get started, edit App.js</Text>
-      <Text style={styles.instructions}>{instructions}</Text>
-    </View>
-  );
+import UploadPost from './insta-me/posts/UploadPost'
+
+import AsyncStorage from '@react-native-community/async-storage';
+import Posts from './insta-me/posts/post';
+
+
+export default class App extends React.Component {
+
+
+  constructor() {
+    super();
+    // var post = Posts()
+    // var clearAllFunc = post.postsClearAll
+  }
+  clearAll = async () => {
+    try {
+      await AsyncStorage.removeItem("posts");
+      Actions.home()
+    } catch (e) {
+      console.log(e)
+    }
+    console.log('Done.')
+  }
+
+  render() {
+    console.log('App >> class')
+    return (
+      <Router navigationBarStyle={{ backgroundColor: global.primaryColor }} >
+        <Stack key="root"  >
+          <Scene key="login" initial={true} type={ActionConst.RESET} component={Login} hideNavBar={true} />
+          <Scene key="signUp" component={SignUp} hideNavBar={true} />
+          <Scene key="home" type={ActionConst.RESET} component={Home}  title="Posts"
+            onRight={this.clearAll} rightTitle="delete all posts" />
+          <Scene key="uploadPost" component={UploadPost} title="Upload Post"
+          />
+        </Stack>
+      </Router>
+    );
+  }
+
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
