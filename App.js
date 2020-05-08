@@ -34,9 +34,9 @@ export default class App extends React.Component {
     return (
       <Router navigationBarStyle={{ backgroundColor: global.primaryColor }} >
         <Stack key="root"  >
-          <Scene key="login" initial={true} type={ActionConst.RESET} component={Login} hideNavBar={true} />
+          <Scene key="login"  type={ActionConst.RESET} component={Login} hideNavBar={true} />
           <Scene key="signUp" component={SignUp} hideNavBar={true} />
-          <Scene key="home" type={ActionConst.RESET} component={Home}  title="Posts"
+          <Scene key="home" initial={true} type={ActionConst.RESET} component={Home}  title="Posts"
             onRight={this.clearAll} rightTitle="delete all posts" />
           <Scene key="uploadPost" component={UploadPost} title="Upload Post"
           />

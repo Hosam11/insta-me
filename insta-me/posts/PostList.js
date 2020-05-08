@@ -51,13 +51,14 @@ export default class PostList extends Component {
 		}
 		console.log('PostList -- renderItem() itemIsFav = ', item.isFav)
 		return (
-			// contentContainerStyle={{ flexGrow: 1 }}
-			<View style={{
-				marginBottom: 25,
-				backgroundColor: global.secColor,
-				borderRadius: 10,
-				overflow: "hidden"
-			}}>
+			<View
+				// contentContainerStyle={{ flexGrow: 1 }}
+				style={{
+					marginBottom: 25,
+					backgroundColor: global.secColor,
+					borderRadius: 10,
+					overflow: "hidden"
+				}}>
 				<View style={{
 					// padding: 5 ,  
 					alignItems: "center",
@@ -73,13 +74,14 @@ export default class PostList extends Component {
 				</View>
 
 				<View style={styles.card_content}>
-					<View style={{ marginLeft: 10 }} >
-						<Text  style={styles.name}>{item.name}</Text>
+					<View style={{ marginLeft: 10, width: "70%" }} >
+						<Text style={styles.name}>{item.name}</Text>
 						<Text style={{ color: "#777", paddingTop: 5 }}>
 							{item.desc}
 						</Text>
 					</View>
-					<TouchableOpacity style={{ marginLeft: 130 }}
+					{/* style={{ marginLeft: 100  }} */}
+					<TouchableOpacity
 						onPress={() => this.onPressHeart(item)}
 					>
 						<IconFA name="heart" size={50}
@@ -123,10 +125,10 @@ const styles = StyleSheet.create({
 		marginTop: 60
 	},
 	name: {
-    fontSize: 28,
-    color: "#696969",
-    fontWeight: "600"
-  },
+		fontSize: 28,
+		color: "#696969",
+		fontWeight: "600"
+	},
 	card_content: {
 		width: "100%",
 		height: 100,
