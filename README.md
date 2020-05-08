@@ -1,5 +1,6 @@
 # insta-me
 
+### simple mobile application using react native that make user upload posts and highlight as favourites and store those data in local storage as well as login and signup that fetch data of users from api 
 
 ![posts-upload post](https://user-images.githubusercontent.com/18370055/81390587-022f7d80-911c-11ea-9db8-7b475fb410ea.png)
 
